@@ -10,17 +10,25 @@ import UIKit
 import WebKit
 import MessageUI
 
-class NewsFeedVC: UIViewController, MFMailComposeViewControllerDelegate {
+class NewsFeedVC: UIViewController, MFMailComposeViewControllerDelegate, WKNavigationDelegate {
     
-     var url = URL(string: "https://wylsa.com/category/news/")
-        var menuShowing = false
     
+    
+    var url = URL(string: "https://wylsa.com/category/news/")
+    var menuShowing = false
+    var labelShowing = false
+    var actualUrl : String!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var leadingConstForMenu: NSLayoutConstraint!
-    
     @IBOutlet weak var poopButtonOut: UIButton!
     @IBOutlet weak var noInetLbl: UILabel!
+    @IBOutlet weak var shareButton: RoundButton!
+    @IBOutlet weak var loadingDataLbl: UILabel!
+    
+    @IBOutlet weak var loadinConst: NSLayoutConstraint!
+    
+    
     
     
     
@@ -29,20 +37,32 @@ class NewsFeedVC: UIViewController, MFMailComposeViewControllerDelegate {
         if (menuShowing){
             leadingConstForMenu.constant = -160
             animationForMenu()
+            shareButton.isHidden = false
         }else{
              leadingConstForMenu.constant = 0
             animationForMenu()
+            shareButton.isHidden = true
         }
         
        menuShowing = !menuShowing
         
     }
     
-    func animationForMenu(){
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
+    @IBAction func shareButton(_ sender: Any) {
+        
+        shareActualUrl()
+     
+        
     }
+    
+    
+    func shareActualUrl(){
+        actualUrl =   webView.url?.absoluteString
+        let activityVC = UIActivityViewController(activityItems: ["Здесь интересная новость " +  actualUrl ], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
     
     
     
@@ -56,6 +76,8 @@ class NewsFeedVC: UIViewController, MFMailComposeViewControllerDelegate {
             showMailError()}
         
     }
+    
+    
     
     //CONFIGURE EMAIL
     func configureMailController()-> MFMailComposeViewController {
@@ -90,12 +112,14 @@ class NewsFeedVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func newsButton(_ sender: Any) {
+
         checkInetConnection()
         goToUrl(link: "https://wylsa.com/category/news" , title: "Новости")
     }
     
     
     @IBAction func articleButton(_ sender: Any) {
+        
          checkInetConnection()
         goToUrl(link: "https://wylsa.com/category/articles/", title: "Статьи")
         
@@ -137,11 +161,13 @@ class NewsFeedVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func commercialButton(_ sender: Any) {
+        hideMenu()
          self.performSegue(withIdentifier: "commercial", sender: navigationController)
     }
     
     
     @IBAction func aboutButton(_ sender: Any) {
+        hideMenu()
         self.performSegue(withIdentifier: "about", sender: navigationController)
     }
     
@@ -153,6 +179,7 @@ class NewsFeedVC: UIViewController, MFMailComposeViewControllerDelegate {
         webView.load(URLRequest(url: url!))
         leadingConstForMenu.constant = -160
         animationForMenu()
+        shareButton.isHidden = false
         self.navigationController?.navigationBar.alpha = 0.9
         UIView.animate(withDuration: 0.4, animations: {
             self.navigationController?.navigationBar.topItem?.title = title
@@ -177,10 +204,12 @@ class NewsFeedVC: UIViewController, MFMailComposeViewControllerDelegate {
         if currentReachabilityStatus == .notReachable{
             poopButtonOut.isHidden = false
             noInetLbl.isHidden = false
+            shareButton.isHidden = true
         }else{
             poopButtonOut.isHidden = true
             noInetLbl.isHidden = true
             webView.load(URLRequest(url: url!))
+            shareButton.isHidden = false
         }
         
     }
@@ -194,15 +223,58 @@ class NewsFeedVC: UIViewController, MFMailComposeViewControllerDelegate {
         if  currentReachabilityStatus == .notReachable {
             poopButtonOut.isHidden = false
             noInetLbl.isHidden = false
+            shareButton.isHidden = true
+        }else{
+            loadingData()
         }
     }
+    
+    
+    //ADDITIONAL ANIMATION
+    
+    func animationForMenu(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    
+    
+    //HIDE MENU
+    func hideMenu(){
+        
+        if (menuShowing){
+            leadingConstForMenu.constant = -160
+            animationForMenu()
+            shareButton.isHidden = false
+        }else{
+            leadingConstForMenu.constant = 0
+            animationForMenu()
+            shareButton.isHidden = true
+        }
+        
+        menuShowing = !menuShowing
+        
+    }
+    
+   func loadingData(){
+    loadingDataLbl.isHidden = false
+    UIApplication.shared.beginIgnoringInteractionEvents()
+    Timer.scheduledTimer(withTimeInterval: 5, repeats: false){(timer) in
+        UIApplication.shared.endIgnoringInteractionEvents()
+       self.loadingDataLbl.isHidden = true
+    }
+    
+        }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webView.load(URLRequest(url: url!))
         
+        
+        webView.load(URLRequest(url: url!))
+      
         //CONFIGURE SHADOWS FOR MENU
         menuView.layer.shadowOpacity = 1
         menuView.layer.shadowRadius = 6
@@ -210,32 +282,28 @@ class NewsFeedVC: UIViewController, MFMailComposeViewControllerDelegate {
         //CHECK INTERNET INTERNET CONNECTION
         poopButtonOut.isHidden = true
         noInetLbl.isHidden = true
+        loadingDataLbl.isHidden = true
         checkInetConnection()
+        
         
         
         //SHADOW OF NAVIGATION BAR
         navigationController?.navigationBar.shadowImage = UIImage()
-        
-        
-       
 
-        // Do any additional setup after loading the view.
+       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

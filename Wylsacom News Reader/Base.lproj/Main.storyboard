@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uS0-AA-yT6">
-                                <rect key="frame" x="0.0" y="-174" width="375" height="875"/>
+                                <rect key="frame" x="0.0" y="-173" width="375" height="875"/>
                                 <color key="backgroundColor" red="0.24678942561149597" green="0.25480279326438904" blue="0.26311391592025757" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -91,7 +92,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFj-S1-bSX">
-                                        <rect key="frame" x="40.5" y="210" width="71" height="40"/>
+                                        <rect key="frame" x="41" y="210" width="71" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="124" id="1Qk-cd-FPv"/>
                                             <constraint firstAttribute="height" constant="40" id="JAD-He-IKJ"/>
@@ -133,7 +134,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjV-3o-P9Q">
-                                        <rect key="frame" x="38.5" y="360" width="75" height="40"/>
+                                        <rect key="frame" x="39" y="360" width="75" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="new-Fw-wXk"/>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="124" id="zcV-Hs-lE1"/>
@@ -147,7 +148,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2R-uy-GpB">
-                                        <rect key="frame" x="44.5" y="410" width="63" height="40"/>
+                                        <rect key="frame" x="45" y="410" width="63" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="124" id="5dT-zd-P8J"/>
                                             <constraint firstAttribute="height" constant="40" id="uIF-K1-51S"/>
@@ -212,7 +213,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ups,there is no connection.Press on poo to check again :)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5S-z6-XPw">
-                                <rect key="frame" x="65.5" y="386" width="244" height="74"/>
+                                <rect key="frame" x="66" y="386" width="244" height="74"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="74" id="JA6-ib-0M9"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="258" id="Oai-3I-8BX"/>
@@ -221,20 +222,70 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1o-FQ-0NL" customClass="RoundButton" customModule="Wylsacom_News_Reader" customModuleProvider="target">
+                                <rect key="frame" x="16" y="597" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.31774400684931509" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="IOh-1o-WST"/>
+                                    <constraint firstAttribute="width" constant="50" id="L7E-Ku-Hfn"/>
+                                </constraints>
+                                <state key="normal" image="share"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.12152183219178082" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="shareButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kw7-sg-ILT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Загружаю новости" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3k3-5S-e62" customClass="RoundLbl" customModule="Wylsacom_News_Reader" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="21"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="PCG-Rw-eoI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="11"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.091716609589041098" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.23594173789024353" green="0.31939035654067993" blue="0.43569689989089966" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="uS0-AA-yT6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-174" id="1VQ-By-fS2"/>
+                            <constraint firstItem="uS0-AA-yT6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-173" id="1VQ-By-fS2"/>
                             <constraint firstItem="MdA-1A-vR9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-155" id="5b8-fU-lLG"/>
-                            <constraint firstItem="uS0-AA-yT6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="EhY-uY-Gpt"/>
+                            <constraint firstAttribute="bottom" secondItem="m1o-FQ-0NL" secondAttribute="bottom" constant="20" symbolic="YES" id="BI4-Fg-2Qd"/>
+                            <constraint firstItem="uS0-AA-yT6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="35" id="EhY-uY-Gpt"/>
+                            <constraint firstItem="3k3-5S-e62" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FU3-LE-mn3"/>
+                            <constraint firstItem="3k3-5S-e62" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NSt-pr-rcO"/>
                             <constraint firstItem="hXu-O5-egX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="PbZ-d5-Tlm"/>
                             <constraint firstItem="q5S-z6-XPw" firstAttribute="top" secondItem="hXu-O5-egX" secondAttribute="bottom" constant="5" id="RMM-S5-LJF"/>
                             <constraint firstItem="uS0-AA-yT6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UZ8-v5-JUR"/>
+                            <constraint firstItem="m1o-FQ-0NL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="VnZ-0y-7ZN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3k3-5S-e62" secondAttribute="trailing" id="Y5W-XT-7KN"/>
                             <constraint firstItem="q5S-z6-XPw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jlI-v1-wWJ"/>
                             <constraint firstItem="MdA-1A-vR9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kfW-i9-pVv"/>
                             <constraint firstItem="MdA-1A-vR9" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="mKl-A0-lvp"/>
                             <constraint firstItem="uS0-AA-yT6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vHJ-xb-ftC"/>
                             <constraint firstItem="hXu-O5-egX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vMr-E6-vuM"/>
+                            <constraint firstItem="3k3-5S-e62" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wPh-U6-ErG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -252,9 +303,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="leadingConstForMenu" destination="5b8-fU-lLG" id="hnd-0e-ZV0"/>
+                        <outlet property="loadinConst" destination="wPh-U6-ErG" id="LzP-mU-y0s"/>
+                        <outlet property="loadingDataLbl" destination="3k3-5S-e62" id="rrP-l5-E8C"/>
                         <outlet property="menuView" destination="MdA-1A-vR9" id="reh-yJ-BFT"/>
                         <outlet property="noInetLbl" destination="q5S-z6-XPw" id="Yp0-Nh-C3d"/>
                         <outlet property="poopButtonOut" destination="hXu-O5-egX" id="QHY-yN-9MN"/>
+                        <outlet property="shareButton" destination="m1o-FQ-0NL" id="ehL-Ln-8HP"/>
                         <outlet property="webView" destination="uS0-AA-yT6" id="zm4-LU-iiB"/>
                         <segue destination="fbt-Aw-K93" kind="show" identifier="about" id="2xN-U3-p26"/>
                         <segue destination="kVI-cB-wu0" kind="show" identifier="commercial" id="qpE-ku-J3s"/>
@@ -264,29 +318,75 @@
             </objects>
             <point key="canvasLocation" x="476" y="131.78410794602701"/>
         </scene>
-        <!--AboutVC-->
+        <!--О приложении-->
         <scene sceneID="Wxn-Mb-ZKT">
             <objects>
-                <viewController id="fbt-Aw-K93" customClass="AboutVC" customModule="Wylsacom_News_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="О приложении" id="fbt-Aw-K93" customClass="AboutVC" customModule="Wylsacom_News_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0ff-kj-RrD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проект создан преданным подписчиком для Wylsacom" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kj-NM-7zM">
-                                <rect key="frame" x="5" y="114" width="365" height="40.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проект создан преданным подписчиком для Wylsacom Media.Для контакта с разработчиком можно использовать следуюшие возмоности:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kj-NM-7zM">
+                                <rect key="frame" x="5" y="114" width="365" height="107"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdB-4i-bBy">
+                                <rect key="frame" x="152" y="241" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="c82-ku-oj1"/>
+                                    <constraint firstAttribute="height" constant="70" id="t45-xS-TCz"/>
+                                </constraints>
+                                <state key="normal" image="gmail"/>
+                                <connections>
+                                    <action selector="eamilBut:" destination="fbt-Aw-K93" eventType="touchUpInside" id="TDK-84-C5Z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYn-d8-efd">
+                                <rect key="frame" x="42" y="241" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="3Y3-Vd-9wF"/>
+                                    <constraint firstAttribute="height" constant="70" id="YTf-NV-XSE"/>
+                                </constraints>
+                                <state key="normal" image="twitter"/>
+                                <connections>
+                                    <action selector="twitterBut:" destination="fbt-Aw-K93" eventType="touchUpInside" id="UZ0-8W-agj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38j-4j-oKf">
+                                <rect key="frame" x="262" y="241" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="3E5-zL-LMl"/>
+                                    <constraint firstAttribute="height" constant="70" id="ABu-6a-E8Z"/>
+                                </constraints>
+                                <state key="normal" image="fb"/>
+                                <connections>
+                                    <action selector="facebookBut:" destination="fbt-Aw-K93" eventType="touchUpInside" id="Tvb-pn-pnh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.19973441958427429" green="0.20774063467979431" blue="0.21605858206748962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="AYn-d8-efd" firstAttribute="leading" secondItem="cZv-6r-paF" secondAttribute="leading" constant="42" id="8MF-ki-F1K"/>
+                            <constraint firstItem="CdB-4i-bBy" firstAttribute="top" secondItem="2Kj-NM-7zM" secondAttribute="bottom" constant="20" id="FD8-FS-QX4"/>
+                            <constraint firstItem="cZv-6r-paF" firstAttribute="bottom" secondItem="AYn-d8-efd" secondAttribute="bottom" constant="356" id="JfD-0h-PBF"/>
+                            <constraint firstItem="38j-4j-oKf" firstAttribute="leading" secondItem="CdB-4i-bBy" secondAttribute="trailing" constant="40" id="TKX-uZ-2eX"/>
+                            <constraint firstItem="AYn-d8-efd" firstAttribute="top" secondItem="2Kj-NM-7zM" secondAttribute="bottom" constant="20" id="cJv-C0-G7B"/>
                             <constraint firstItem="cZv-6r-paF" firstAttribute="trailing" secondItem="2Kj-NM-7zM" secondAttribute="trailing" constant="5" id="ked-UK-LxM"/>
+                            <constraint firstItem="CdB-4i-bBy" firstAttribute="centerX" secondItem="0ff-kj-RrD" secondAttribute="centerX" id="o4h-WA-dMx"/>
                             <constraint firstItem="2Kj-NM-7zM" firstAttribute="top" secondItem="cZv-6r-paF" secondAttribute="top" constant="50" id="tsg-lj-XF9"/>
+                            <constraint firstItem="38j-4j-oKf" firstAttribute="top" secondItem="2Kj-NM-7zM" secondAttribute="bottom" constant="20" id="xGf-Wl-Wix"/>
                             <constraint firstItem="2Kj-NM-7zM" firstAttribute="leading" secondItem="cZv-6r-paF" secondAttribute="leading" constant="5" id="zNe-kH-NNx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cZv-6r-paF"/>
                     </view>
+                    <connections>
+                        <outlet property="emailButton" destination="CdB-4i-bBy" id="9kj-6d-8Xm"/>
+                        <outlet property="facebookButton" destination="38j-4j-oKf" id="Jh8-6g-VRI"/>
+                        <outlet property="textLbl" destination="2Kj-NM-7zM" id="eVf-JY-3bL"/>
+                        <outlet property="twitterButton" destination="AYn-d8-efd" id="wxO-M4-hfo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y03-dB-aNO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -416,10 +516,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fb" width="96" height="96"/>
         <image name="gmail" width="96" height="96"/>
         <image name="media" width="96" height="96"/>
         <image name="menu" width="24" height="24"/>
         <image name="poo" width="96" height="96"/>
         <image name="price" width="96" height="96"/>
+        <image name="share" width="96" height="96"/>
+        <image name="twitter" width="96" height="96"/>
     </resources>
 </document>

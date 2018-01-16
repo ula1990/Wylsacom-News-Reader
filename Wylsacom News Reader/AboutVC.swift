@@ -7,8 +7,33 @@
 //
 
 import UIKit
+import MessageUI
 
-class AboutVC: UIViewController {
+class AboutVC: UIViewController, MFMailComposeViewControllerDelegate {
+    
+    
+    @IBOutlet weak var textLbl: UILabel!
+    @IBOutlet weak var emailButton: UIButton!
+    @IBOutlet weak var twitterButton: UIButton!
+    @IBOutlet weak var facebookButton: UIButton!
+    
+    
+    
+    @IBAction func eamilBut(_ sender: Any) {
+        
+        
+    }
+    
+    @IBAction func facebookBut(_ sender: Any) {
+        
+        
+    }
+    
+    @IBAction func twitterBut(_ sender: Any) {
+        
+        
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
